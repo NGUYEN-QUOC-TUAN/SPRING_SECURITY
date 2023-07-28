@@ -1,9 +1,6 @@
 package com.example.security_2.config;
 
-import jakarta.servlet.annotation.MultipartConfig;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,11 +22,15 @@ public class SecurityConfig {
                 .password(encoder.encode("ph20022"))
                 .roles("ADMIN")
                 .build();
-        UserDetails user = User.withUsername("user")
-                .password(encoder.encode("pwd1"))
+        UserDetails user = User.withUsername("phongtt3222")
+                .password(encoder.encode("123"))
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(admin, user);
+        UserDetails user2 = User.withUsername("phongtt32")
+                .password(encoder.encode("123"))
+                .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(admin, user, user2);
     }
 
     @Bean
